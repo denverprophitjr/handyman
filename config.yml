@@ -1,0 +1,130 @@
+# ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
+#
+#      _____ _ __          _____      __  __  _
+#     / ___/(_) /____     / ___/___  / /_/ /_(_)___  ____ ______
+#     \__ \/ / __/ _ \    \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
+#    ___/ / / /_/  __/   ___/ /  __/ /_/ /_/ / / / / /_/ (__  )
+#   /____/_/\__/\___/   /____/\___/\__/\__/_/_/ /_/\__, /____/
+#                                                 /____/
+#
+title: Handyman Static Website Template $169 USD
+# The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
+description: "Static Handyman website template created with Ruby Jekyll features smooth section scrolling, JSON+LD structured data, Open Graph Tags for social sharing."
+emailt: "Web Contact Email"
+subjectt: "Please tell us your home or business repair needs. Do not send sensitive information via email. Thank for your interests!"
+# The location
+tel: 888-111-2222
+# "contactOption" : ["HearingImpairedSupported","TollFree"]
+availableLanguage: "English"
+lang: en-US
+direction: rtl
+email: sales@example.com
+foundingcity: Lake Panasoffkee
+foundingmonth: 05
+foundingyear: 1999
+addr: "4110 42nd PL."
+city: Lake Panasoffkee
+state: FL
+country: US
+zip: 33538
+lat: 28.816520
+long: -82.145370
+timezone: America/New_York
+logo: "featured-image.jpg"
+legalName: "HandyMan Repairman"
+language: en-US
+hours: "Su-Sat 09:00-17:00"
+currenciesAccepted: USD
+paymentAccepted: "Check, Credit Card"
+priceRange: "$$"
+wikidata: Q98028606
+isicV4: 9529
+naics: 811490
+
+
+# This URL is the main address for absolute links. Don't include a slash at the end.
+#
+url: 
+# Destination / Source
+destination: 
+source: 
+baseurl: 
+
+feed:
+  path: atom.xml
+  
+  # Jekyll Plugins
+plugins:
+    - jekyll-feed
+    - jekyll-sitemap
+    - jekyll-redirect-from
+    - jekyll-last-modified-at
+    - jekyll-gzip
+    - jekyll-oemebed
+    - jekyll-mentions
+    
+    
+   _____      __  __  _                 
+  / ___/___  / /_/ /_(_)___  ____ ______
+  \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
+ ___/ /  __/ /_/ /_/ / / / / /_/ (__  ) 
+/____/\___/\__/\__/_/_/ /_/\__, /____/  
+                          /____/        
+jekyll-mentions:
+      base_url: https://twitter.com
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+excerpt_separator: "<!--more-->"
+# Include/Exclude these files from production _site
+include: ['.htaccess']
+
+# . files and folders are excluded by default,
+# but --watch and serve are regenerating if they're not explicitly excluded.
+# See › https://github.com/jekyll/jekyll/issues/3913
+exclude:
+  # GitHub
+  - .git
+  - .gitignore
+  - CNAME
+  - vendor
+  - README.md
+  # Build Artifacts and byproducts
+  - .sass-cache
+  - .gradle
+  - _site
+  - _drafts/_*
+  # Build Scripts and Dependencies
+  - build.gradle
+  - Gemfile
+  - Gemfile.lock
+  # _config*.yml      # doesn't work, see https://github.com/jekyll/jekyll-watch/issues/34
+  - _config_local.yml # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
+  - _config_dev.yml   # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
+  # Projects Files
+  - .idea
+  - .classpath
+  - .project
+  # Random stuff
+  - sources
+  - .svn
+  - .git
+  - System Volume Information
+  - README.txt
+  - LICENSE.txt
+
+  # Used › default.html front-matter and compress.html
+# Options › http://jch.penibelst.de
+
+compress_html:
+    clippings: []
+    comments: []
+    endings: []
+    ignore:
+    envs: []
+    blanklines: false
+    profile: false
+    startings: []
+    
+    
