@@ -1,12 +1,11 @@
 # ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
 #
-#      _____ _ __          _____      __  __  _
-#     / ___/(_) /____     / ___/___  / /_/ /_(_)___  ____ ______
-#     \__ \/ / __/ _ \    \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
-#    ___/ / / /_/  __/   ___/ /  __/ /_/ /_/ / / / / /_/ (__  )
-#   /____/_/\__/\___/   /____/\___/\__/\__/_/_/ /_/\__, /____/
-#                                                 /____/
-#
+#  _    __           _       __    __         
+# | |  / /___ ______(_)___ _/ /_  / /__  _____
+# | | / / __ `/ ___/ / __ `/ __ \/ / _ \/ ___/
+# | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  ) 
+# |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/  
+#                                            
 title: Handyman Static Website Template $169 USD
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
 description: "Static Handyman website template created with Ruby Jekyll features smooth section scrolling, JSON+LD structured data, Open Graph Tags for social sharing."
@@ -16,7 +15,6 @@ subjectt: "Please tell us your home or business repair needs. Do not send sensit
 tel: 888-111-2222
 # "contactOption" : ["HearingImpairedSupported","TollFree"]
 availableLanguage: "English"
-lang: en-US
 direction: rtl
 email: sales@example.com
 foundingcity: Lake Panasoffkee
@@ -62,14 +60,14 @@ plugins:
     - jekyll-gzip
     - jekyll-oemebed
     - jekyll-mentions
-    
-    
-   _____      __  __  _                 
-  / ___/___  / /_/ /_(_)___  ____ ______
-  \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
- ___/ /  __/ /_/ /_/ / / / / /_/ (__  ) 
-/____/\___/\__/\__/_/_/ /_/\__, /____/  
-                          /____/        
+    - jekyll-compress-images
+#    _____      __  __  _                 
+#   / ___/___  / /_/ /_(_)___  ____ ______
+#   \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
+#  ___/ /  __/ /_/ /_/ / / / / /_/ (__  ) 
+# /____/\___/\__/\__/_/_/ /_/\__, /____/  
+#                           /____/        
+encoding: utf-8 # Make sure the encoding is right
 jekyll-mentions:
       base_url: https://twitter.com
 markdown: kramdown
@@ -79,7 +77,7 @@ kramdown:
 excerpt_separator: "<!--more-->"
 # Include/Exclude these files from production _site
 include: ['.htaccess']
-
+lang: en-US
 # . files and folders are excluded by default,
 # but --watch and serve are regenerating if they're not explicitly excluded.
 # See › https://github.com/jekyll/jekyll/issues/3913
@@ -126,5 +124,149 @@ compress_html:
     blanklines: false
     profile: false
     startings: []
-    
-    
+
+# TODO what is this?
+lsi: false
+
+# The language setting is used in /includes/header.html for html-settings
+#
+#       ____       ____            ____
+#      / __ \___  / __/___ ___  __/ / /_
+#     / / / / _ \/ /_/ __ `/ / / / / __/
+#    / /_/ /  __/ __/ /_/ / /_/ / / /_
+#   /_____/\___/_/  \__,_/\__,_/_/\__/
+#
+# Default Settings
+
+defaults:
+  -
+    scope:
+      path: '' 				# an empty string here means all files in the project
+      type: 'pages'
+    values:
+      author: member1     # Default author for pages
+      is_post: True
+  -
+    scope:
+      path: ''
+      type: 'posts'
+    values:
+      jsontype: post
+      author: member1     # Default author for posts
+      permalink: /:categories/:title:output_ext
+      is_post: True
+  -
+    scope:
+      path: ''
+      type: 'meta_tags'
+    values:
+      jsontype: collection
+      author: member1
+      layout: tag-page
+      format: default
+  -
+    scope:
+      path: ''
+      type: 'meta_categories'
+    values:
+      jsontype: collection
+      layout: default
+      author: member1
+  -
+    scope:
+      path: ''
+      type: 'services'
+    values:
+      jsontype: collection
+      layout: default
+      permalink: /:collection/:title:output_ext
+      author: member1
+
+#    ______      ____          __  _
+#   / ____/___  / / /__  _____/ /_(_)___  ____  _____
+#  / /   / __ \/ / / _ \/ ___/ __/ / __ \/ __ \/ ___/
+# / /___/ /_/ / / /  __/ /__/ /_/ / /_/ / / / (__  )
+# \____/\____/_/_/\___/\___/\__/_/\____/_/ /_/____/
+
+# Collections
+collections_dir: collections
+collections:
+  posts:
+    output: true
+  meta_tags:
+    output: true
+    permalink: /:name/
+  meta_categories:
+    output: true
+    permalink: /:name/
+  services:
+    output: true
+    permalink: /:collection/:title:output_ext
+
+#
+#     _____ __________
+#    / ___// ____/ __ \
+#    \__ \/ __/ / / / /
+#   ___/ / /___/ /_/ /
+#  /____/_____/\____/
+# Verify Website to Webmaster Tools
+
+# google_site_verification:  ''
+# bing_webmastertools_id:    ''
+# yandex_site_verification:  ''
+# alexa_verify_id:           ''
+
+# https://www.google.com/search?q=Cagan And Cagan Law Firm&ludocid=17926433025171928482&uule=ChIJNaVyt67U54gRojU0q9t7x_g&fg=1#lpqa=a,,d,1
+# Google Maps Business Name
+google_name: 'Idlewild Lodge & RV Park'
+# https://pleper.com/index.php?do=tools&sdo=cid_converter
+google_cid: 12241066285278804848
+# https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+google_pid: ChIJYTkMuqDg54gRcLsNNu4A4ak
+google_map: https://goo.gl/maps/1jhDgRxD695N5WSa9
+
+#       ______                __                __
+#      / ____/___ _________  / /_  ____  ____  / /__
+#     / /_  / __ `/ ___/ _ \/ __ \/ __ \/ __ \/ //_/
+#    / __/ / /_/ / /__/  __/ /_/ / /_/ / /_/ / ,<
+#   /_/    \__,_/\___/\___/_.___/\____/\____/_/|_|      Facebook-Optimization › http://j.mp/fb_optimize
+
+og_image: 'twitter.png'
+og_locale: 'en_US'
+fb_admins:
+fb_appid: 455753628524146
+fb_pageid: 1575010949200491
+
+#      _____            _       __   __  ___         ___
+#     / ___/____  _____(_)___ _/ /  /  |/  /__  ____/ (_)___ _
+#     \__ \/ __ \/ ___/ / __ `/ /  / /|_/ / _ \/ __  / / __ `/
+#    ___/ / /_/ / /__/ / /_/ / /  / /  / /  __/ /_/ / / /_/ /
+#   /____/\____/\___/_/\__,_/_/  /_/  /_/\___/\__,_/_/\__,_/
+#
+#  Open _data/socialmedia.yml to adjust the left and right topbar navigation
+#
+
+social:
+    twitter: "@DenverProphitJr"
+    facebook: denverprophit
+
+
+#      _____
+#     / ___/____ ___________
+#     \__ \/ __ `/ ___/ ___/
+#    ___/ / /_/ (__  |__  )     More › http://sass-lang.com/
+#   /____/\__,_/____/____/      More › http://jekyllrb.com/docs/assets/#sassscss
+#
+
+sass:
+    sass_dir : _sass
+    style    : :compressed
+#       ___                __      __  _
+#      /   |  ____  ____ _/ /_  __/ /_(_)_________
+#     / /| | / __ \/ __ `/ / / / / __/ / ___/ ___/
+#    / ___ |/ / / / /_/ / / /_/ / /_/ / /__(__  )
+#   /_/  |_/_/ /_/\__,_/_/\__, /\__/_/\___/____/      https://www.google.com/analytics/
+#                        /____/
+#
+# used in _includes/footer_scripts
+google_analytics_tracking_id: UA-1338145-15
