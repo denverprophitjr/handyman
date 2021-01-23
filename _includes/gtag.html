@@ -1,0 +1,4 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{site.google_analytics_tracking_id}}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{site.google_analytics_tracking_id}}');{%if page.groupid%}gtag('set',{'content_group{{page.groupid}}':'{{page.groupname}}'});{%endif%}
+if(window.performance){var timeSincePageLoad=Math.round(performance.now());gtag('event','timing_complete',{'name':'load','value':timeSincePageLoad,'event_category':'Jekyll Static'})}</script>

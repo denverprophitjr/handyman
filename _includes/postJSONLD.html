@@ -1,0 +1,99 @@
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "url": "{{ site.url }}{{ page.url }}",
+        "name": {{ page.title | jsonify }},
+        "headline": {{ page.title | jsonify }},
+        "genre": {{ site.genre | jsonify }},
+        "keywords": {{ page.tags | join: ',' | jsonify }},
+        "description": {{ page.excerpt | strip_newlines | strip | strip_html | jsonify }},
+        "articleSection": {{ page.categories.first | jsonify }},
+        "wordCount": {% capture words %}{{ page.content | number_of_words | minus: 250 }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | jsonify }},{% endunless %}
+        "articleBody": {{ page.content | strip_html | remove: "\n\n" | jsonify }},
+        "datePublished": {{ page.date | jsonify }},
+        "dateModified": {{ page.last_modified_at | default: page.date | jsonify }},
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "image": {
+         "@type": "ImageObject",
+         "representativeOfPage": "True",
+         "width": {
+           "@type": "QuantitativeValue", 
+            "value": "{{page.img_width | default: site.img_width }}",
+            "unitCode": "E37"
+         },
+         "height": {
+           "@type": "QuantitativeValue", 
+            "value": "{{page.img_height | default: site.img_height }}",
+            "unitCode": "E37"
+         },
+        "caption": "Logo of {{site.title}}",
+        "url": "{{ page.featured_image | default: site.img_url }}"
+        },
+        "author": {
+            "@type": "Person",
+            "@id": {{page.author_id | jsonify }},
+            "name": {{ page.author_name | jsonify }}
+        },
+        "publisher": {
+            "@type": "Person",
+            "@id": {{site.publisher_id | jsonify }},
+            "name": {{ site.publisher | jsonify }},
+            "url": {{ site.url | jsonify }},
+            "logo": {
+                "@type": "ImageObject",
+                "width": 1000,
+                "height": 500,
+                "url": "{{ site.url }}/img/logo-denver.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "ItemPage",
+            "@id": {{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url | jsonify }}
+        },
+        "image": {
+         "@type": "ImageObject",
+         "representativeOfPage": "True",
+         "width": {
+           "@type": "QuantitativeValue", 
+           "value": "{{page.img_width | default: site.img_width }}",
+           "unitCode": "E37"
+        },
+         "height": {
+           "@type": "QuantitativeValue", 
+           "value": "{{page.img_height | default: site.img_height }}",
+           "unitCode": "E37"
+         },
+        "caption": "{{page.excerpt}}",
+        "url": "{{site.url}}/assets/images/content/{{ page.featured_image}} | default: site.img_url }}"
+      },
+      "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": "1",
+          "item": {
+            "@id": "{{ site.url | append: '/index.html' }}",
+            "name": "Home"
+          }
+        },{% assign crumbs = page.url | remove:'/index.html' | split: '/' %} {% assign crumbs_total = crumbs | size | minus: 1 %}{% for crumb in crumbs offset: 1 %}{% if forloop.index == crumbs_total %}
+        {
+          "@type": "ListItem",
+          "position": "{{ crumbs_total | plus:1 }}",
+          "item": {
+            "@id": "{{ site.url }}{{ page.url }}",
+            "name": "{{ page.crumbtitle}}"
+          }
+        }{% else %}
+        {
+          "@type": "ListItem",
+          "position": "{{ crumbs_total }}",
+          "item": {
+            "@id": "{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}",
+            "name": "{{ crumb | replace:'-',' ' | upcase }}"
+          }
+        },{% endif %}{% endfor %}
+      ]
+    }
+  }
+}

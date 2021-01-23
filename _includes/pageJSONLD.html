@@ -1,0 +1,95 @@
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "#article",
+{% if page.wikidata %}"about": "https://wikidata.org/wiki/{{page.wikidata}}",{% endif %}
+    "image": {
+       "@type": "ImageObject",
+       "representativeOfPage": "True",
+       "width": {
+         "@type": "QuantitativeValue", 
+          "value": "{{page.img_width | default: site.img_width }}",
+          "unitCode": "E37"
+       },
+       "height": {
+         "@type": "QuantitativeValue", 
+          "value": "{{page.img_height | default: site.img_height }}",
+          "unitCode": "E37"
+       },
+      "caption": "Logo of {{site.title}}",
+      "url": "{{site.url}}/assets/images/content/{{ page.featured_image | default: site.img_url }}"
+    },
+    "url": "{{ site.url }}{{ page.url }}",
+    "name": {{ page.title | jsonify }},
+    "headline": {{ page.title | jsonify }},
+    "genre": {{ site.genre | jsonify }},
+    "keywords": {{ page.tags | join: ',' | jsonify }},
+    "description": {{ page.summary | strip_newlines | strip | strip_html | remove: "\n\n" | jsonify }},
+    "wordCount": {% capture words %}{{ page.content | number_of_words | minus: 250 }}{% endcapture %}"{{ words | plus: 250 }}",
+    "articleSection": {{ page.category | jsonify }},
+    "datePublished": {{ page.date | jsonify }},
+    "dateModified": {{ page.last_modified_at | default: page.date | jsonify }},
+{% assign author = site.data.members[page.author] %}
+    "author": {
+    "@type": "person",
+    "@id": {{ author.permalink | jsonify }},
+    "name": {{ author.name | jsonify }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "{{site.url}}/about.html",
+      "name": {{ site.title | jsonify }},
+      "logo":
+        {
+       "@type": "ImageObject",
+       "representativeOfPage": "True",
+       "width": {
+         "@type": "QuantitativeValue", 
+          "value": "{{page.img_width | default: site.img_width }}",
+          "unitCode": "E37"
+       },
+       "height": {
+         "@type": "QuantitativeValue", 
+          "value": "{{page.img_height | default: site.img_height }}",
+          "unitCode": "E37"
+       },
+      "caption": "Logo of {{site.title}}",
+       "url":"{{site.url}}/assets/images/{{site.logo}}"
+      }
+    },
+    {% if page.groupid == 1 %}"hasPart": { "@type": "FAQPage", "@id": "{{site.url}}{{page.url | replace: "index","faq"}}" },{% endif %}
+    "mainEntityOfPage":
+      {
+        "@type": "ItemPage",
+         "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": "1",
+          "item": {
+            "@id": "{{ site.url | append: '/index.html' }}",
+            "name": "Home"
+          }
+        },{% assign crumbs = page.url | remove:'/index.html' | split: '/' %} {% assign crumbs_total = crumbs | size | minus: 1 %}{% for crumb in crumbs offset: 1 %}{% if forloop.index == crumbs_total %}
+        {
+          "@type": "ListItem",
+          "position": "{{ crumbs_total | plus:1 }}",
+          "item": {
+            "@id": "{{ site.url }}{{ page.url }}",
+            "name": "{{ page.crumbtitle}}"
+          }
+        }{% else %}
+        {
+          "@type": "ListItem",
+          "position": "{{ crumbs_total }}",
+          "item": {
+            "@id": "{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}",
+            "name": "{{ crumb | replace:'-',' ' | upcase }}"
+          }
+        },{% endif %}{% endfor %}
+      ]
+    }
+  }
+  }
+

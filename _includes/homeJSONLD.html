@@ -1,0 +1,168 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "#brand",
+  "paymentAccepted": "Check, Credit Card",
+  "name": "{{page.title}}",
+  "description": "{{page.excerpt}}",
+{% if site.data.sameas %}{% assign sm = site.data.sameas %}"sameAs":[{% for entry in sm %}{% assign key = entry | first %}{% if sm[key].id %}"{{ sm[key].href }}{{ sm[key].id }}",{% if forloop.last %}"{{ sm[key].href }}{{ sm[key].id }}"{% endif %}{% endif %}{% endfor %}{% endif %} ],
+  "address": {
+    "@type": "PostalAddress",
+    "@id": "#postal",
+    "streetAddress": "{{site.addr}}",
+    "addressLocality": "{{site.city}}",
+    "addressRegion": "{{site.state}}",
+    "postalCode": "{{site.zip}}",
+    "addressCountry": "{{site.country}}"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{site.lat}}",
+    "longitude": "{{site.long}}"
+  },
+  "isicV4": "{{site.isicV4}}",
+  "naics": "{{site.naics}}",
+  "hasMap": "{{site.google_map}}",
+  "logo": {
+    "@type": "ImageObject",
+    "representativeOfPage": "False",
+    "width": {
+      "@type": "QuantitativeValue",
+      "value": "300",
+      "unitCode": "E37"
+    },
+    "height": {
+      "@type": "QuantitativeValue",
+      "value": "300",
+      "unitCode": "E37"
+    },
+    "caption": "{{site.description}}",
+    "contentUrl": "{{site.url}}/assets/images/{{site.logo}}",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "acquireLicensePage": "{{site.url}}/tou.html"
+     },
+  "image": {
+    "@type": "ImageObject",
+    "@id": "#img",
+    "representativeOfPage": "True",
+    "width": {
+      "@type": "QuantitativeValue",
+      "value": "1200",
+      "unitCode": "E37"
+    },
+    "height": {
+      "@type": "QuantitativeValue",
+      "value": "512",
+      "unitCode": "E37"
+    },
+    "caption": "{{page.excerpt}}",
+    "url": "{{site.url}}/assets/images/content/{{page.og_image}}",
+    "contentUrl": "{{site.url}}/assets/images/content/{{page.og_image}}",
+    "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "acquireLicensePage": "{{site.url}}/tou.html"
+  },
+  "priceRange": "{{site.priceRange}}",
+  "telephone": "{{site.tel}}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "2"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": [
+      "Home Owners",
+      "Business Owners"
+    ],
+    "sameAs": "https://www.wikidata.org/wiki/Q4993251"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Handyman Services",
+    "itemListElement": [
+      {% for item in site.services %}{
+        "@type": "OfferCatalog",
+        "name": "{{item.title}}",
+        "itemListElement": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "category": "{{item.category}}",
+            "name": "{{item.title}}",
+            "description": "{{item.description}}",
+            "provider": {
+              "@id": "#brand"
+            },
+            "providerMobility": "dynamic",
+            "sameAs": "https://www.wikidata.org/wiki/{{item.wikidata}}",
+            "serviceOutput": {
+              "@type": "Thing",
+              "name": "{{item.title}}",
+              "description": "{{item.excerpt}}",
+              "sameAs": "https://www.wikidata.org/wiki/{{item.wikidata}}"
+            },
+            "serviceType": "https://schema.org/ProfessionalService"
+          }
+        }
+      {%if forloop.last%}}{%else%}},{%endif%}{%endfor%}
+    ]
+  },
+  "mainEntityofPage": {
+    "@type": "ItemPage",
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "representativeOfPage": "True",
+      "width": {
+        "@type": "QuantitativeValue",
+        "value": "1024",
+        "unitCode": "E37"
+      },
+      "height": {
+        "@type": "QuantitativeValue",
+        "value": "512",
+        "unitCode": "E37"
+      },
+      "caption": "{{page.excerpt}}",
+      "contentUrl": "{{site.url}}/assets/images/content/{{page.og_image}}",
+      "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "acquireLicensePage": "{{site.url}}/tou.html"
+    },
+    "lastReviewed": "{{ page.last_modified_at }}",
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Denver Prophit Jr"
+    },
+    "accountablePerson": {
+      "@type": "Person",
+      "name": "Denver Prophit Jr"
+    },
+    "specialty": {
+      "@type": "Specialty ",
+      "@id": "https://www.wikidata.org/wiki/{{site.wikidata}}"
+    },
+    "copyrightHolder": {
+      "@type": "Organization",
+      "@id": "#brand",
+      "name": "{{site.title}}",
+      "logo": {
+        "@type": "ImageObject",
+        "representativeOfPage": "False",
+        "width": {
+          "@type": "QuantitativeValue",
+          "value": "300",
+          "unitCode": "E37"
+        },
+        "height": {
+          "@type": "QuantitativeValue",
+          "value": "300",
+          "unitCode": "E37"
+        },
+        "caption": "{{site.description}}",
+        "contentUrl": "{{site.url}}/assets/images/{{site.logo}}",
+        "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "acquireLicensePage": "{{site.url}}/tou.html"
+    }},
+    "copyrightYear": "2020",
+    "discussionUrl": "https://twitter.com/{{site.social.twitter}}/status/{{page.tweetid}}"
+    }
+}
