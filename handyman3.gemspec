@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-commonmark", "~> 1.3.1"
   spec.add_runtime_dependency "jekyll-include-cache", "~> 0.2"
   
-  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "bundler", ">= 2.2.10"
   spec.add_development_dependency "rake", "~> 12.0"
 end
